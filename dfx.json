@@ -1,37 +1,41 @@
 {
-  "canisters": {
-    "internet_identity": {
-      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
-      "frontend": {},
-      "remote": {
-        "id": {
-          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+    "canisters": {
+        "internet_identity": {
+            "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+            "frontend": {},
+            "remote": {
+                "id": {
+                    "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+                }
+            },
+            "type": "custom",
+            "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
+        },
+        "momint-dao-backend": {
+            "main": "src/momint-dao-backend/main.mo",
+            "type": "motoko"
+        },
+        "momint-nft": {
+            "main": "src/momint-nft/momint-nft.mo",
+            "type": "motoko"
+        },
+        "momint-performance": {
+            "main": "src/momint-performance/momint-performance.mo",
+            "type": "motoko"
+        },
+        "momint-dao-frontend": {
+            "dependencies": ["momint-dao-backend"],
+            "source": ["src/momint-dao-frontend/dist"],
+            "type": "assets",
+            "workspace": "momint-dao-frontend"
         }
-      },
-      "type": "custom",
-      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
     },
-    "momint-dao-backend": {
-      "main": "src/momint-dao-backend/main.mo",
-      "type": "motoko"
+    "defaults": {
+        "build": {
+            "args": "",
+            "packtool": ""
+        }
     },
-    "momint-dao-frontend": {
-      "dependencies": [
-        "momint-dao-backend"
-      ],
-      "source": [
-        "src/momint-dao-frontend/dist"
-      ],
-      "type": "assets",
-      "workspace": "momint-dao-frontend"
-    }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
+    "output_env_file": ".env",
+    "version": 1
 }
